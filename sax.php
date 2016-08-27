@@ -3,11 +3,23 @@
   // Создание парсера
   $sax = xml_parser_create("utf-8");
   // Функция обработчик начальных тегов
-  function onStart($parser, $tag, $attributes){}
+  function onStart($parser, $tag, $attributes){
+    if($tag != "CATALOG" and $tag != "BOOK")
+      echo "<td>";
+    if($tag == "BOOK")
+      echo "<tr>";
+  }
   // Функция обработчик закрывающих тегов
-  function onEnd($parser, $tag){}
+  function onEnd($parser, $tag){
+    if($tag != "CATALOG" and $tag != "BOOK")
+      echo "</td>";
+    if($tag == "BOOK")
+      echo "</tr>";
+  }
   // Функция обработчик текстового содержимого
-  function onText($parser, $text){}
+  function onText($parser, $text){
+    echo $text;
+  }
   // Назначение обработчиков начальных и конечных тегов
   xml_set_element_handler($sax, "onStart", "onEnd");
   // Назначение обработчика текстового содержимого
