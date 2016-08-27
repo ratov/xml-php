@@ -29,7 +29,8 @@
       <th>Цена, руб</th>
     </tr>
     <?php
-      //Парсинг 
+      //Парсинг
+    xml_parse($sax, file_get_contents("catalog.xml"));
     ?>
   </table>
 </body>
